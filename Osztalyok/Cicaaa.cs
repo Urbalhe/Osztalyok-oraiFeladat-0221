@@ -41,6 +41,8 @@ namespace Osztalyok
 
 			if (esely <= 4)
 			{
+				Console.WriteLine($"{nev} ételmérgezett lett :( ");
+
 				szin = "zöld";
 				suly -= (int)(suly * (esely / 100.0));
 				rendetlensegiSzint /= 2;
@@ -49,6 +51,7 @@ namespace Osztalyok
 
 			else
 			{
+				Console.WriteLine($"{nev} megette a kaját és jól esett neki.");
 				suly += (int)Math.Ceiling(fogyasztas * kajaSuly);
 			}
 
@@ -73,7 +76,7 @@ namespace Osztalyok
 
 		public void RomlottKaja()
 		{
-			Console.WriteLine($"A kaja romlott volt, ezért {this.nev} ételmérgezett lett :( ");
+			Console.WriteLine($"{nev} evett egy romlott kaját.");
 			Eves(0.5);
 		}
 
@@ -117,19 +120,19 @@ namespace Osztalyok
 			if(rendetlensegiSzint <= 0 && rendetlensegiSzint <=25)
 			{
 				cselekves = lehetosegek[random.Next(0, 2)];
-				Console.WriteLine($"{nev} éppen {cselekves}-eket végez.");
+				Console.WriteLine($"{nev} éppen {cselekves}.");
 			}
 
 			else if(rendetlensegiSzint <= 25 && rendetlensegiSzint <= 50)
 			{
 				cselekves = lehetosegek[random.Next(0, 4)];
-				Console.WriteLine($"{nev} éppen {cselekves}-eket végez.");
+				Console.WriteLine($"{nev} éppen {cselekves}.");
 			}
 
 			else if (rendetlensegiSzint <= 50 && rendetlensegiSzint <= 75)
 			{
 				cselekves = lehetosegek[random.Next(0, 7)];
-				Console.WriteLine($"{nev} éppen {cselekves}-eket végez.");
+				Console.WriteLine($"{nev} éppen {cselekves}.");
 			}
 
 			else if (rendetlensegiSzint <= 75)
