@@ -42,23 +42,23 @@ namespace Osztalyok
 			if (esely <= 4)
 			{
 				szin = "zöld";
-				suly -= (int)(suly * (esely/100.0));
+				suly -= (int)(suly * (esely / 100.0));
 				rendetlensegiSzint /= 2;
 
 			}
 
 			else
 			{
-			suly += (int)Math.Ceiling(fogyasztas * kajaSuly);
+				suly += (int)Math.Ceiling(fogyasztas * kajaSuly);
 			}
-			
+
 		}
 
 		public void Alvas()
 		{
 			rendetlensegiSzint = 0;
 
-			if(szin == "zöld")
+			if (szin == "zöld")
 			{
 				szin = "Eredeti";
 			}
@@ -73,8 +73,8 @@ namespace Osztalyok
 
 		public void RomlottKaja()
 		{
-			Console.WriteLine($"A kaja romlott volt, ezért {this.nev} ételmérgezett lett :( ");	
-			Eves(0.5);		
+			Console.WriteLine($"A kaja romlott volt, ezért {this.nev} ételmérgezett lett :( ");
+			Eves(0.5);
 		}
 
 		public void Aktivitas()
@@ -84,14 +84,60 @@ namespace Osztalyok
 				rendetlensegiSzint = rendetlensegiSzint * 1;
 			}
 
-			else if (8 <  kor && kor < 20)
+			else if (8 < kor && kor < 20)
 			{
-				rendetlensegiSzint = rendetlensegiSzint / 2;	
+				rendetlensegiSzint = rendetlensegiSzint / 2;
 			}
 		}
 
+		public void Fajbesorolas()
+		{
+			if (szin == "narancs")
+			{
+				rendetlensegiSzint = rendetlensegiSzint * 2;
+			}
 
-		
+			else if (szin == "fekete")
+			{
+				rendetlensegiSzint = rendetlensegiSzint / 2;
+			}
+
+
+
+
+		}
+
+		public void Jatek()
+		{
+			List <string> lehetosegek = new List<string> { "Ugrál", "Tomból", "Ered", "Rohan", "Nyávog", "Kapar", "Támad", "Játszik", "Gombolyagot üldöz", "Eszik" };
+
+			Random random = new Random();
+			string cselekves = "";
+
+			if(rendetlensegiSzint <= 0 && rendetlensegiSzint <=25)
+			{
+				cselekves = lehetosegek[random.Next(0, 2)];
+				Console.WriteLine($"{nev} éppen {cselekves}-eket végez.");
+			}
+
+			else if(rendetlensegiSzint <= 25 && rendetlensegiSzint <= 50)
+			{
+				cselekves = lehetosegek[random.Next(0, 4)];
+				Console.WriteLine($"{nev} éppen {cselekves}-eket végez.");
+			}
+
+			else if (rendetlensegiSzint <= 50 && rendetlensegiSzint <= 75)
+			{
+				cselekves = lehetosegek[random.Next(0, 7)];
+				Console.WriteLine($"{nev} éppen {cselekves}-eket végez.");
+			}
+
+			else if (rendetlensegiSzint <= 75)
+			{
+				cselekves = lehetosegek[random.Next(0, 9)];
+				Console.WriteLine($"{nev} éppen {cselekves}-.");
+			}
+		}
 
 	}
 
