@@ -20,12 +20,13 @@ namespace Osztalyok
 
 
 
-		public Cicaaa(string nev, int kor, int suly, string fajta, int rendetlensegiSzint, int fogyasztas, string nem)
+		public Cicaaa(string nev, int kor, int suly, string fajta, string szin, int rendetlensegiSzint, int fogyasztas, string nem)
 		{
 			this.nev = nev;
 			this.kor = kor;
 			this.suly = suly;
 			this.fajta = fajta;
+			this.szin = szin;	
 			this.rendetlensegiSzint = rendetlensegiSzint;
 			this.fogyasztas = fogyasztas;
 			this.nem = nem;
@@ -64,6 +65,9 @@ namespace Osztalyok
 			if (szin == "zöld")
 			{
 				szin = "Eredeti";
+				Console.WriteLine($"{nev} kipihente magát és visszanyerte eredeti színét.");
+				
+				
 			}
 		}
 
@@ -112,18 +116,18 @@ namespace Osztalyok
 
 		public void Jatek()
 		{
-			List <string> lehetosegek = new List<string> { "Ugrál", "Tomból", "Ered", "Rohan", "Nyávog", "Kapar", "Támad", "Játszik", "Gombolyagot üldöz", "Eszik" };
+			List<string> lehetosegek = new List<string> { "Ugrál", "Tomból", "Ered", "Rohan", "Nyávog", "Kapar", "Támad", "Játszik", "Gombolyagot üldöz", "Eszik" };
 
 			Random random = new Random();
 			string cselekves = "";
 
-			if(rendetlensegiSzint <= 0 && rendetlensegiSzint <=25)
+			if (rendetlensegiSzint <= 0 && rendetlensegiSzint <= 25)
 			{
 				cselekves = lehetosegek[random.Next(0, 2)];
 				Console.WriteLine($"{nev} éppen {cselekves}.");
 			}
 
-			else if(rendetlensegiSzint <= 25 && rendetlensegiSzint <= 50)
+			else if (rendetlensegiSzint <= 25 && rendetlensegiSzint <= 50)
 			{
 				cselekves = lehetosegek[random.Next(0, 4)];
 				Console.WriteLine($"{nev} éppen {cselekves}.");
@@ -142,8 +146,21 @@ namespace Osztalyok
 			}
 		}
 
+
+			public override string? ToString()
+			{
+				return $"{nev} {kor} {suly} {fajta} {szin} {rendetlensegiSzint} {fogyasztas} {nem}";
+			}
+
+
+
+
+
+
+		}
+
 	}
 
 
 
-}
+
